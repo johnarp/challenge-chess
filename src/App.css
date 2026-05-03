@@ -1,0 +1,36 @@
+.title {
+	font-size: xx-large;
+}
+
+.chess {
+	color: var(--prim);
+	font-weight: bold;
+}
+
+button {
+	background: none;
+	border: 1px solid var(--prim);
+	color: var(--prim);
+	font-family: 'Pliego', sans-serif;
+	font-size: 1rem;
+	padding: 6px 18px;
+	cursor: pointer;
+}
+
+button:hover {
+	background: var(--prim);
+	color: var(--bg);
+}
+
+input, textarea {
+	background: none;
+	border: 1px solid var(--text);
+	color: var(--text);
+	font-family: 'Pliego', sans-serif;
+	font-size: 1rem;
+	padding: 6px 10px;
+}
+
+input::placeholder, textarea::placeholder {
+	color: #ffffff88;
+}
