@@ -96,11 +96,11 @@ export default function GamePage({ gameCode, myColor }: Props) {
 
 	async function resolveChallenge() {
 		if (!challenge) return
+		const snap = await getDoc(gameRef)
+		const currentFen: string = snap.data()?.boardState
 
 		if (challenge.verdict === 'INVALID') {
-			const snap = await getDoc(gameRef)
 			const prevFen: string = snap.data()?.previousBoardState
-			// fix the turn in the FEN to match the challenger
 			const correctedFen = prevFen.replace(/ (w|b) /, ` ${challenge.challenger === 'white' ? 'w' : 'b'} `)
 			await updateDoc(gameRef, {
 				boardState: correctedFen,
@@ -109,7 +109,11 @@ export default function GamePage({ gameCode, myColor }: Props) {
 				challenge: { active: false, challenger: null, challengerArg: null, defenderArg: null, verdict: null },
 			})
 		} else {
+			const defender = challenge.challenger === 'white' ? 'black' : 'white'
+			const correctedFen = currentFen.replace(/ (w|b) /, ` ${defender === 'white' ? 'w' : 'b'} `)
 			await updateDoc(gameRef, {
+				boardState: correctedFen,
+				turn: defender,
 				lastCapture: null,
 				challenge: { active: false, challenger: null, challengerArg: null, defenderArg: null, verdict: null },
 			})

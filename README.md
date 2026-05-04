@@ -60,8 +60,6 @@ npm run dev -- --host
 
 Then share the IP address it gives you.
 
-> **NOTE:** The Gemini prompt functionality is currently commented and replaced with a simulated, random outcome. If you wish to use Gemini, please uncomment the prompt portion and comment the static response.
+## Known Issues
 
-## Security Note
-
-Your API keys are stored in `.env` which is gitignored, they will not be pushed to GitHub. However, because this is a frontend-only app, Vite bundles the keys into the JavaScript served to the browser. Anyone who inspects the page source can find them. This is fine for playing with friends but not for a public audience.
+- Mobile experience is poor

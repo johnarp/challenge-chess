@@ -1,6 +1,22 @@
 # Changelog
 
+[0.1.1]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.1
 [0.1.0]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.0
+
+## [0.1.1] - 2026-05-04
+
+### Added
+
+- Fallback for when AI fails
+- Groq API option
+
+### Changed
+
+- AI API is now server-side
+
+### Fixed
+
+- Defender not getting free move when challenge fails
 
 ## [0.1.0] - 2026-05-03
 
