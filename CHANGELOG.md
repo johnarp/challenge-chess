@@ -10,6 +10,10 @@
 
 - Judge console error check
 
+### Changed
+
+- Increased max tokens
+
 ## [0.1.1] - 2026-05-04
 
 ### Added
