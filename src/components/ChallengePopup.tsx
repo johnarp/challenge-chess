@@ -45,7 +45,7 @@ export default function ChallengePopup({ myColor, challenger, challenge, onSubmi
 					<div style={{ marginTop: 24, borderTop: '1px solid #ffc735', paddingTop: 16 }}>
 						<p><strong>Challenger argued:</strong> {challenge.challengerArg}</p>
 						<p><strong>Defender argued:</strong> {challenge.defenderArg}</p>
-						<h3>{challenge.verdict === 'INVALID' ? '✅ Challenge successful! Move undone.' : '❌ Challenge failed. Move stands.'}</h3>
+						<h3>{challenge.verdict === 'INVALID' ? '✅ Challenge Successful! Move Undone.' : '❌ Challenge Failed. Move Stands.'}</h3>
 						<p style={{ fontStyle: 'italic' }}>{challenge.judgeResponse}</p>
 						<button onClick={onResolve} style={{ marginTop: 12 }}>Continue</button>
 					</div>

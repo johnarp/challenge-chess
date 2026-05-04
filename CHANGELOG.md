@@ -12,6 +12,7 @@
 
 ### Changed
 
+- AI message is no longer trimmed
 - Increased max tokens
 - Prompt is more strict about length
 - Separate system message, prompt and temperature changes to force a verdict

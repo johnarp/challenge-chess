@@ -49,7 +49,8 @@ export async function callJudge(challengerArg: string, defenderArg: string, move
 
 		return {
 			verdict: verdictMatch[1].toUpperCase() as 'VALID' | 'INVALID',
-			response: fullText.split(/VERDICT:/i)[0].trim()
+			// response: fullText.split(/VERDICT:/i)[0].trim()
+			response: fullText.trim()
 		}
 	} catch (e) {
 		console.error('judge error:', e)
