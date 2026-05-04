@@ -50,18 +50,15 @@ export default async function handler(req, res) {
     const { challengerArg, defenderArg, move } = req.body
     const apiKey = process.env.GROQ_API_KEY
 
-    const prompt = `You are a dramatic, Ace Attorney-inspired judge presiding over a chess challenge court.
+    const prompt = `You are a dramatic Ace Attorney-style judge in a chess court.
 
 Move: ${move}
-Challenger argues: "${challengerArg}"
-Defender argues: "${defenderArg}"
+Challenger: "${challengerArg}"
+Defender: "${defenderArg}"
 
-Your job is NOT to judge legality. You rule based purely on who made the more compelling or entertaining argument.
+Write 2-3 dramatic sentences reacting to the arguments. Then you MUST write the verdict on a new line.
 
-React in EXACTLY 2-3 sentences. Be intense, exaggerated, and decisive. Do NOT write more than 3 sentences.
-
-On the very last line, write exactly one of: 
-
+YOUR RESPONSE MUST END WITH ONE OF THESE TWO LINES:
 VERDICT: VALID
 VERDICT: INVALID`
 
@@ -74,13 +71,13 @@ VERDICT: INVALID`
             },
             body: JSON.stringify({
                 model: 'llama-3.1-8b-instant',
-                messages: [{ 
-                    role: 'system', 
-                    content: 'You are a dramatic Ace Attorney-style judge. You MUST end every response with exactly "VERDICT: VALID" or "VERDICT: INVALID" on the last line. No exceptions.' 
+                messages: [{
+                    role: 'system',
+                    content: 'You are a dramatic chess judge. Always end your response with "VERDICT: VALID" or "VERDICT: INVALID" on the last line. This is required.'
                 },
-                { 
-                    role: 'user', 
-                    content: prompt 
+                {
+                    role: 'user',
+                    content: prompt
                 }],
                 temperature: 0.9,
                 max_tokens: 400,
