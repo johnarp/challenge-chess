@@ -50,7 +50,8 @@ export async function callJudge(challengerArg: string, defenderArg: string, move
 			verdict: verdictMatch[1].toUpperCase() as 'VALID' | 'INVALID',
 			response: fullText.split(/VERDICT:/i)[0].trim()
 		}
-	} catch {
+	} catch (e) {
+		console.error('judge error:', e)
 		return {
 			verdict: Math.random() > 0.5 ? 'VALID' : 'INVALID',
 			response: 'The judge has fallen ill and cannot preside today. The result has been decided by coin flip.'

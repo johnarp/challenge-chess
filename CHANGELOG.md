@@ -1,7 +1,14 @@
 # Changelog
 
+[unreleased]: https://github.com/johnarp/challenge-chess/releases/tag/HEAD
 [0.1.1]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.1
 [0.1.0]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.0
+
+## [Unreleased]
+
+### Added
+
+- Judge console error check
 
 ## [0.1.1] - 2026-05-04
 
