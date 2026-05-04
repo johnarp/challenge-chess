@@ -13,6 +13,7 @@
 ### Changed
 
 - Increased max tokens
+- Prompt is more strict about length
 
 ## [0.1.1] - 2026-05-04
 

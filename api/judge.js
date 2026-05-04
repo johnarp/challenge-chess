@@ -58,7 +58,7 @@ Defender argues: "${defenderArg}"
 
 Your job is NOT to judge legality. You rule based purely on who made the more compelling or entertaining argument.
 
-React in 2-3 sentences. Be intense, exaggerated, and decisive.
+React in EXACTLY 2-3 sentences. Be intense, exaggerated, and decisive. Do NOT write more than 3 sentences.
 
 On the very last line, write exactly one of: 
 
