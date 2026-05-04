@@ -41,6 +41,7 @@ export async function callJudge(challengerArg: string, defenderArg: string, move
 		})
 
 		const data = await res.json()
+		console.log('raw:', JSON.stringify(data))
 		const fullText: string = data.choices?.[0]?.message?.content ?? ''
 		const verdictMatch = fullText.match(/VERDICT:\s*(VALID|INVALID)/i)
 

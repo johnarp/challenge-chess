@@ -8,7 +8,7 @@
 
 ### Added
 
-- Judge console error check
+- Judge console error checking
 
 ### Changed
 
