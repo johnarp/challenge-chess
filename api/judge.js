@@ -74,7 +74,14 @@ VERDICT: INVALID`
             },
             body: JSON.stringify({
                 model: 'llama-3.1-8b-instant',
-                messages: [{ role: 'user', content: prompt }],
+                messages: [{ 
+                    role: 'system', 
+                    content: 'You are a dramatic Ace Attorney-style judge. You MUST end every response with exactly "VERDICT: VALID" or "VERDICT: INVALID" on the last line. No exceptions.' 
+                },
+                { 
+                    role: 'user', 
+                    content: prompt 
+                }],
                 temperature: 0.9,
                 max_tokens: 400,
             }),

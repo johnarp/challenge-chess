@@ -14,6 +14,7 @@
 
 - Increased max tokens
 - Prompt is more strict about length
+- Separate system message to force a verdict
 
 ## [0.1.1] - 2026-05-04
 
