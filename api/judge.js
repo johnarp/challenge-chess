@@ -79,7 +79,7 @@ VERDICT: INVALID`
                     role: 'user',
                     content: prompt
                 }],
-                temperature: 0.9,
+                temperature: 0.3,
                 max_tokens: 400,
             }),
         })

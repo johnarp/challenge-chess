@@ -14,7 +14,7 @@
 
 - Increased max tokens
 - Prompt is more strict about length
-- Separate system message and prompt changes to force a verdict
+- Separate system message, prompt and temperature changes to force a verdict
 
 ## [0.1.1] - 2026-05-04
 
