@@ -145,7 +145,7 @@
 	margin: 0 auto;
 	max-width: 100%;
 	min-height: 100svh;
-	width: 1126px;
+	width: min(1126px, 100%);
 
 	box-sizing: border-box;
 	display: flex;
@@ -158,4 +158,10 @@
 
 body {
 	margin: 0;
+}
+
+@media (max-width: 600px) {
+    #root {
+        border-inline: none;
+    }
 }

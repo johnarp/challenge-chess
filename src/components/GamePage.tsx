@@ -121,7 +121,7 @@ export default function GamePage({ gameCode, myColor }: Props) {
 	}
 
 	return (
-		<div style={{ width: 500, margin: '0 auto' }}>
+		<div style={{ width: 'min(500px, 95vw)', margin: '0 auto' }}>
 			<p>{turn === myColor ? 'Your turn' : "Opponent's turn"} — Challenges left: {challengesLeft}</p>
 			{gameOver && (
 				<div style={{ textAlign: 'center', padding: 20 }}>

@@ -34,3 +34,24 @@ input, textarea {
 input::placeholder, textarea::placeholder {
 	color: #ffffff88;
 }
+
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.popup {
+    background: var(--fg);
+    border: 1px solid var(--prim);
+    border-radius: 8px;
+    padding: 32px;
+    width: 480px;
+    max-width: 95vw;
+    max-height: 90vh;
+    overflow-y: auto;
+}

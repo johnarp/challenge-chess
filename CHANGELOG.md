@@ -1,21 +1,25 @@
 # Changelog
 
-[unreleased]: https://github.com/johnarp/challenge-chess/releases/tag/HEAD
+[0.1.2]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.2
 [0.1.1]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.1
 [0.1.0]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.0
 
-## [Unreleased]
+## [0.1.2] - 2026-05-05
 
 ### Added
 
 - Judge console error checking
+- Meta tags
 
 ### Changed
 
+- Mobile UI improvements
+- README overhaul
 - AI message is no longer trimmed
 - Increased max tokens
 - Prompt is more strict about length
 - Separate system message, prompt and temperature changes to force a verdict
+- .env.example with Groq
 
 ## [0.1.1] - 2026-05-04
 
