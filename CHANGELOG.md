@@ -1,8 +1,24 @@
 # Changelog
 
+[0.1.3]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.3
 [0.1.2]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.2
 [0.1.1]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.1
 [0.1.0]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.0
+
+## [0.1.3] - 2026-05-06
+
+### Added
+
+- Game code displayed in-game
+
+### Changed
+
+- Player IDs are now random UUIDs stored in localStorage instead of hardcoded strings, enabling game rejoining
+- Chessboard tile colors
+
+### Fixed
+
+- Errors in README
 
 ## [0.1.2] - 2026-05-05
 

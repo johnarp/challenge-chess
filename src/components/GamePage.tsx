@@ -123,19 +123,22 @@ export default function GamePage({ gameCode, myColor }: Props) {
 	return (
 		<div style={{ width: 'min(500px, 95vw)', margin: '0 auto' }}>
 			<p>{turn === myColor ? 'Your turn' : "Opponent's turn"} — Challenges left: {challengesLeft}</p>
+			<p style={{ color: 'var(--prim)', marginTop: -10 }}>Code: {gameCode}</p>
 			{gameOver && (
-				<div style={{ textAlign: 'center', padding: 20 }}>
+				<div style={{ textAlign: 'center' }}>
 					<h2>{gameOver}</h2>
-					<button onClick={() => window.location.reload()}>Back to Menu</button>
+					<button onClick={() => window.location.reload()} style={{ marginBottom: 10 }} >Back to Menu</button>
 				</div>
 			)}
 			<Chessboard
 				position={fen}
 				onPieceDrop={onDrop}
 				boardOrientation={myColor}
+				customDarkSquareStyle={{ backgroundColor: '#34556b' }}
+				customLightSquareStyle={{ backgroundColor: '#f0e0b5' }}
 			/>
 			{canChallenge && (
-				<div style={{ marginTop: 12 }}>
+				<div style={{ marginTop: 10 }}>
 					<button onClick={onChallenge}>Challenge</button>
 				</div>
 			)}

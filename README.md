@@ -30,8 +30,10 @@ A Chess variant where players can challenge their opponent's captures before a j
 
 ## 📸 Preview
 
-<img src="./public/preview-1.png" width="45%">
-<img src="./public/preview-2.png" width="45%">
+<div style="display: flex; gap: 10px; justify-content: center">
+    <img src="./public/preview-1.png" width="45%">
+    <img src="./public/preview-2.png" width="45%">
+</div>
 
 ## 🚀 Installation
 
@@ -53,7 +55,7 @@ Or, if you wish to play it locally, here are the steps:
 Clone the repository through a terminal, such as Command Line or Powershell:
 
 ```
-git clone https://github.com/yourusername/challenge-chess
+git clone https://github.com/johnarp/challenge-chess
 cd challenge-chess
 npm install
 ```
@@ -80,7 +82,7 @@ Then share the IP address it gives you.
 
 ## ⚠️ Known Issues
 
-*TBD*
+- The challenge result menu closes for both players when one closes it
 
 ## 🗺️ Roadmap
 
@@ -91,6 +93,7 @@ Then share the IP address it gives you.
 - Customization
 - Matchmaking
 - Website icon
+- Ace Attorney-style challenge menu
 
 ## 📜 Disclaimer
 

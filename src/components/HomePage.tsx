@@ -3,6 +3,7 @@ import { doc, setDoc, getDoc, updateDoc, onSnapshot } from 'firebase/firestore'
 import { db } from '../lib/firebase'
 
 interface Props {
+	playerId: string
 	onGameJoined: (code: string, color: 'white' | 'black') => void
 }
 
@@ -10,7 +11,7 @@ function genCode() {
 	return Math.random().toString(36).substring(2, 8).toUpperCase()
 }
 
-export default function HomePage({ onGameJoined }: Props) {
+export default function HomePage({ playerId, onGameJoined }: Props) {
 	const [code, setCode] = useState('')
 	const [pendingCode, setPendingCode] = useState('')
 	const [error, setError] = useState('')
@@ -31,7 +32,7 @@ export default function HomePage({ onGameJoined }: Props) {
 		const newCode = genCode()
 		await setDoc(doc(db, 'games', newCode), {
 			boardState: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
-			players: { white: 'p1', black: null },
+			players: { white: playerId, black: null },
 			status: 'waiting',
 			turn: 'white',
 			lastCapture: null,
@@ -45,9 +46,20 @@ export default function HomePage({ onGameJoined }: Props) {
 		const snap = await getDoc(doc(db, 'games', code))
 		if (!snap.exists()) { setError('Game not found'); return }
 		const data = snap.data()
+
+		// rejoin as white
+		if (data.players.white === playerId) {
+			onGameJoined(code, 'white'); return
+		}
+		// rejoin as black
+		if (data.players.black === playerId) {
+			onGameJoined(code, 'black'); return
+		}
+
 		if (data.status !== 'waiting') { setError('Game is full'); return }
+
 		await updateDoc(doc(db, 'games', code), {
-			'players.black': 'p2',
+			'players.black': playerId,
 			status: 'active',
 		})
 		onGameJoined(code, 'black')
