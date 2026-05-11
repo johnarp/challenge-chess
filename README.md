@@ -86,7 +86,7 @@ Then share the IP address it gives you.
 
 ## 🗺️ Roadmap
 
-- UI & design improvements
+- General UI & design improvements
 - Local AI
 - Match timer
 - Sounds
@@ -94,6 +94,7 @@ Then share the IP address it gives you.
 - Matchmaking
 - Website icon
 - Ace Attorney-style challenge menu
+- Change how many challenges a player can have
 
 ## 📜 Disclaimer
 

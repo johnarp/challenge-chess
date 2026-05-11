@@ -1,9 +1,21 @@
 # Changelog
 
+[0.1.4]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.4
 [0.1.3]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.3
 [0.1.2]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.2
 [0.1.1]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.1
 [0.1.0]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.0
+
+## [0.1.4] - 2026-05-11
+
+### Changed
+
+- Player's role is highlighted in the challenge popup
+- Turn text and challenge button is hidden when the game is over
+
+### Fixed
+
+- Rare issue. When a piece that is attacking a king is captured, the move can be challenged. If the move is undone, the attacking piece can capture the king. This used to not end the game or allow players to move. Now, the game ends
 
 ## [0.1.3] - 2026-05-06
 

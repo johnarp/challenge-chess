@@ -17,19 +17,15 @@ export default function GamePage({ gameCode, myColor }: Props) {
 	const [canChallenge, setCanChallenge] = useState(false)
 	const [challengesLeft, setChallengesLeft] = useState(3)
 	const [challenge, setChallenge] = useState<any>(null)
-	const gameRef = doc(db, 'games', gameCode)
 	const [gameOver, setGameOver] = useState('')
+	const gameRef = doc(db, 'games', gameCode)
 
 	useEffect(() => {
 		const unsub = onSnapshot(gameRef, (snap) => {
 			const data = snap.data()
 			if (!data) return
 			if (data.boardState) setFen(data.boardState)
-			if (data.boardState) {
-				setFen(data.boardState)
-				const g = new Chess(data.boardState)
-				if (g.isGameOver()) setGameOver(g.isCheckmate() ? `${data.turn === 'white' ? 'Black' : 'White'} Wins!` : 'Draw!')
-			}
+			if (data.gameOver) setGameOver(data.gameOver)
 			if (data.turn) setTurn(data.turn)
 			if (data.challenge) setChallenge(data.challenge)
 
@@ -75,12 +71,20 @@ export default function GamePage({ gameCode, myColor }: Props) {
 		setTurn(nextTurn)
 		setCanChallenge(false)
 
+		const kingCaptured = move.captured === 'k'
+		const winner = kingCaptured ? (myColor === 'white' ? 'White' : 'Black') : null
+		const normalGameOver = !kingCaptured && game.isGameOver()
+			? game.isCheckmate() ? `${myColor === 'white' ? 'White' : 'Black'} Wins!` : 'Draw!'
+			: null
+		const gameOverValue = winner ? `${winner} Wins!` : normalGameOver
+
 		updateDoc(gameRef, {
 			previousBoardState: fen,
 			boardState: newFen,
 			turn: nextTurn,
-			lastCapture: move.captured ? { color: myColor, san: move.san, captured: move.captured } : null,
+			lastCapture: move.captured && !kingCaptured ? { color: myColor, san: move.san, captured: move.captured } : null,
 			challenge: { active: false, challenger: null, challengerArg: null, defenderArg: null, verdict: null },
+			gameOver: gameOverValue,
 		})
 		return true
 	}
@@ -122,12 +126,12 @@ export default function GamePage({ gameCode, myColor }: Props) {
 
 	return (
 		<div style={{ width: 'min(500px, 95vw)', margin: '0 auto' }}>
-			<p>{turn === myColor ? 'Your turn' : "Opponent's turn"} — Challenges left: {challengesLeft}</p>
+			{!gameOver && <p>{turn === myColor ? 'Your turn' : "Opponent's turn"} — Challenges left: {challengesLeft}</p>}
 			<p style={{ color: 'var(--prim)', marginTop: -10 }}>Code: {gameCode}</p>
 			{gameOver && (
 				<div style={{ textAlign: 'center' }}>
 					<h2>{gameOver}</h2>
-					<button onClick={() => window.location.reload()} style={{ marginBottom: 10 }} >Back to Menu</button>
+					<button onClick={() => window.location.reload()} style={{ marginBottom: 10 }}>Back to Menu</button>
 				</div>
 			)}
 			<Chessboard
@@ -137,7 +141,7 @@ export default function GamePage({ gameCode, myColor }: Props) {
 				customDarkSquareStyle={{ backgroundColor: '#34556b' }}
 				customLightSquareStyle={{ backgroundColor: '#f0e0b5' }}
 			/>
-			{canChallenge && (
+			{canChallenge && !gameOver && (
 				<div style={{ marginTop: 10 }}>
 					<button onClick={onChallenge}>Challenge</button>
 				</div>
