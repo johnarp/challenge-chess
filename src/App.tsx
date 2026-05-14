@@ -34,9 +34,7 @@ export default function App() {
 			{screen === 'home' && <HomePage playerId={playerId} onGameJoined={onGameJoined} />}
 			{screen === 'game' && <GamePage gameCode={gameCode} myColor={myColor} />}
 			<footer style={{ marginTop: 'auto', padding: 16, textAlign: 'center' }}>
-				<a href="https://github.com/johnarp/challenge-chess" target="_blank" style={{ color: 'var(--prim)', textDecoration: 'none', fontSize: '0.85rem' }}>
-					GitHub
-				</a>
+				<a href="https://github.com/johnarp/challenge-chess" target='_blank'><i className='fa fa-github' style={{ fontSize: '36px', color: 'var(--prim)' }}></i></a>
 			</footer>
 		</>
 	)

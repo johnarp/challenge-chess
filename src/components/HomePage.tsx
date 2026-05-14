@@ -68,13 +68,13 @@ export default function HomePage({ playerId, onGameJoined }: Props) {
 	return (
 		<div style={{ padding: 40 }}>
 			<button onClick={createGame}>Create Game</button>
-			{pendingCode && <p>Share this code: <strong>{pendingCode}</strong></p>}
+			{pendingCode && <p>Code: <strong>{pendingCode}</strong></p>}
 
-			<div style={{ marginTop: 32 }}>
+			<div style={{ marginTop: 32, display: 'flex', gap: '10px', justifyContent: 'center' }}>
 				<input
 					value={code}
 					onChange={e => setCode(e.target.value.toUpperCase())}
-					placeholder="Enter code"
+					placeholder="Enter Code..."
 				/>
 				<button onClick={joinGame}>Join Game</button>
 				{error && <p>{error}</p>}

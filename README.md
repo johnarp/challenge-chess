@@ -43,6 +43,8 @@ Or, if you wish to play it locally, here are the steps:
 
 > Note: The current setup does not use VITE_ for the AI API key and is server-side. In other words, the AI will not work locally and will fallback to a static random outcome. While this functionality may be added in the future, if you wish to use AI locally as of now, you will have to make changes to the code.
 
+> Note: The judge only works on Vercel, or locally via `vercel dev`. Running `npm run dev` alone will fallback to a static random outcome.
+
 ### 1. Prerequisites
 
 - [Firebase](https://console.firebase.google.com) project with Firestore
@@ -94,7 +96,9 @@ Then share the IP address it gives you.
 - Matchmaking
 - Website icon
 - Ace Attorney-style challenge menu
-- Change how many challenges a player can have
+- Option to change how many challenges a player can have
+- Move list
+- Show captured pieces
 
 ## 📜 Disclaimer
 
