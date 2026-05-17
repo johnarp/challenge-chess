@@ -88,17 +88,28 @@ Then share the IP address it gives you.
 
 ## 🗺️ Roadmap
 
-- General UI & design improvements
-- Local AI
-- Match timer
+### General
+
+- UI/UX improvements
+
+### Features
+
+- Ace Attorney style challenge UI
+    - If fitting, TTS to read the verdict
+- Timer
 - Sounds
 - Customization
 - Matchmaking
-- Website icon
-- Ace Attorney-style challenge menu
-- Option to change how many challenges a player can have
-- Move list
+
+### Functionality
+
+- Player left detection
+- Local AI judge
+- Change how many challenges a player can have
+- Previous move list
 - Show captured pieces
+- Show remaining challenges for each player (circles maybe)
+- Show checks visibly
 
 ## 📜 Disclaimer
 

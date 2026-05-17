@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Chess } from 'chess.js'
+import { Chess, type Square } from 'chess.js'
 import { Chessboard } from 'react-chessboard'
 import { doc, updateDoc, onSnapshot, getDoc } from 'firebase/firestore'
 import { db } from '../lib/firebase'
@@ -18,6 +18,8 @@ export default function GamePage({ gameCode, myColor }: Props) {
 	const [challengesLeft, setChallengesLeft] = useState(3)
 	const [challenge, setChallenge] = useState<any>(null)
 	const [gameOver, setGameOver] = useState('')
+	const [selectedSquare, setSelectedSquare] = useState<Square | null>(null)
+	const [optionSquares, setOptionSquares] = useState<Record<string, any>>({})
 	const gameRef = doc(db, 'games', gameCode)
 
 	useEffect(() => {
@@ -70,6 +72,8 @@ export default function GamePage({ gameCode, myColor }: Props) {
 		setFen(newFen)
 		setTurn(nextTurn)
 		setCanChallenge(false)
+		setSelectedSquare(null)
+		setOptionSquares({})
 
 		const kingCaptured = move.captured === 'k'
 		const winner = kingCaptured ? (myColor === 'white' ? 'White' : 'Black') : null
@@ -87,6 +91,38 @@ export default function GamePage({ gameCode, myColor }: Props) {
 			gameOver: gameOverValue,
 		})
 		return true
+	}
+
+	function getMoveOptions(square: Square) {
+		const game = new Chess(fen)
+		const moves = game.moves({ square, verbose: true })
+		if (moves.length === 0) { setOptionSquares({}); return }
+		const newSquares: Record<string, any> = {}
+		moves.forEach(move => {
+			newSquares[move.to] = {
+				background: 'radial-gradient(circle, rgba(255,199,53,0.5) 25%, transparent 25%)',
+				borderRadius: '50%',
+			}
+		})
+		newSquares[square] = { background: 'rgba(255,199,53,0.4)' }
+		setOptionSquares(newSquares)
+	}
+
+	function onSquareClick(square: Square) {
+		if (turn !== myColor) return
+		if (challenge?.active) return
+		const game = new Chess(fen)
+		const piece = game.get(square)
+		const myPieceColor = myColor === 'white' ? 'w' : 'b'
+
+		if (selectedSquare) {
+			if (selectedSquare === square) { setSelectedSquare(null); setOptionSquares({}); return }
+			if (piece && piece.color === myPieceColor) { setSelectedSquare(square); getMoveOptions(square); return }
+			const moved = onDrop(selectedSquare, square)
+			if (!moved) { setSelectedSquare(null); setOptionSquares({}) }
+			return
+		}
+		if (piece && piece.color === myPieceColor) { setSelectedSquare(square); getMoveOptions(square) }
 	}
 
 	function onChallenge() {
@@ -137,7 +173,9 @@ export default function GamePage({ gameCode, myColor }: Props) {
 			<Chessboard
 				position={fen}
 				onPieceDrop={onDrop}
+				onSquareClick={onSquareClick}
 				boardOrientation={myColor}
+				customSquareStyles={optionSquares}
 				customDarkSquareStyle={{ backgroundColor: '#34556b' }}
 				customLightSquareStyle={{ backgroundColor: '#f0e0b5' }}
 			/>

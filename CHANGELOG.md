@@ -1,6 +1,6 @@
 # Changelog
 
-[unreleased]: https://github.com/johnarp/challenge-chess/releases/tag/HEAD
+[0.1.6]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.6
 [0.1.5]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.5
 [0.1.4]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.4
 [0.1.3]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.3
@@ -8,7 +8,16 @@
 [0.1.1]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.1
 [0.1.0]: https://github.com/johnarp/challenge-chess/releases/tag/v0.1.0
 
-## [Unreleased]
+## [0.1.6] - 2026-05-17
+
+### Added
+
+- Click to move
+- Website icon
+
+### Changed
+
+- AI's final sentence is now a statement, not a question
 
 ### Fixed
 

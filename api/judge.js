@@ -56,7 +56,9 @@ Move: ${move}
 Challenger: "${challengerArg}"
 Defender: "${defenderArg}"
 
-Write 2-3 dramatic sentences reacting to the arguments. Then you MUST write the verdict on a new line.
+Write 2-3 dramatic sentences reacting to the arguments.
+Your final sentence must be a decisive statement, NOT a question. State your ruling with conviction before the VERDICT line.
+Then you MUST write the verdict on a new line.
 
 YOUR RESPONSE MUST END WITH ONE OF THESE TWO LINES:
 VERDICT: VALID
